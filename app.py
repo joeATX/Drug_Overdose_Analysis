@@ -4,7 +4,8 @@ import pandas as pd
 from eda_app import run_eda_app
 # Import our mini apps
 from ml_app import run_ml_app
-
+# Load Data Visualization pakage(s)
+import matplotlib.pyplot as plt
 
 @st.cache_data
 def load_data(df):
