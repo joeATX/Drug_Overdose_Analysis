@@ -1,26 +1,17 @@
 import streamlit as st
-# import streamlit.components.v1 as stc
-
+import pandas as pd
 # Import our mini apps
 from eda_app import run_eda_app
-# from ml_app import run_ml_app
-
-import pandas as pd
-
-
-# Load the dataset with caching
+# Import our mini apps
+from ml_app import run_ml_app
 
 
-# Load the dataset with caching
 @st.cache_data
 def load_data(df):
-    return pd.read_pickle(df)  # or use pd.read_csv for CSV files
-
-# Load the data from the pickle file (or CSV file)
+    return pd.read_pickle(df)
 
 
 df = load_data('data/drug_overdose_data.pkl')
-stats_df = load_data("data/Drug overdose.pkl")
 
 desc_temp = """
 #### Drug Overdose Stats App
@@ -62,9 +53,6 @@ In-line citation for limited space:
 
 def main():
     st.title("Drug Overdose Death Rate")
-    # st.title("Drug Overdose Data")
-    # stc.html(html_temp)
-
     menu = ["Home", "EDA", "ML", "About"]
     choice = st.sidebar.selectbox("Menu", menu)
 
@@ -75,9 +63,7 @@ def main():
         run_eda_app()
     elif choice == "ML":
         run_ml_app()
-    else:
-        st.subheader("About")
 
-
+        
 if __name__ == '__main__':
     main()
